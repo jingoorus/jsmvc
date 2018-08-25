@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>JS MVC</title>
+	<script src="router.class.js"></script>
+	<script src="controller.class.js"></script>
+	<script src="model.class.js"></script>
+	<script src="view.class.js"></script>
+	<script src="xhttp.class.js"></script>
+	<script src="hash.class.js"></script>
+	<style>
+	    body {padding:0 30%;}
+	    header {padding:2em 0;}
+	    footer {text-align:center; position:absolute; bottom:0; left:0; width:100%;}
+	</style>
+</head>
+<body>
+<header>Simple MVC JavaScript engine</header>
+<nav>
+	<span><a href="#main">Main</a></span> |
+	<span><a href="#contacts">Contacts</a></span>
+</nav>
+<section id="content"></section>
+<footer>Simple MVC JavaScript engine</footer>
+<script>
+let container = document.querySelectorAll('#content')[0];
+const app = new Core('main', container);//calling router
+</script>
+</body>
+</html>
