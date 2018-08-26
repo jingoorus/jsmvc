@@ -1,3 +1,6 @@
 {
-    "name": "Main page"
+    "index":
+    {
+        "name": "Main page"
+    }
 }

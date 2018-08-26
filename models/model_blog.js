@@ -1,15 +1,8 @@
 'use strict';
 
-class Model
+class Model_blog extends Model
 {
-	constructor (page, action)
-	{
-		this._page = page;
-
-		this._action = action;
-	}
-
-	getData(hashData)
+    getData(hashData)
 	{
         let _this = this;
 
@@ -17,7 +10,7 @@ class Model
 
             new Xhttp('db/'+ _this._page +'.json', resolve, reject).then(result => {
 
-				let data = JSON.parse(result)[_this._action];
+                let data = JSON.parse(result)[hashData.page];
 
 				if (hashData !== false) Object.assign(data, hashData);
 

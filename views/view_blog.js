@@ -1,21 +1,14 @@
 'use strict';
 
-class View
+class View_blog extends View
 {
-	constructor (page, action)
-	{
-		this._page = page;
-
-		this._action = action;
-	}
-
     generate(data)
     {
         let _this = this;
 
         return new Promise((resolve, reject) => {
 
-            new Xhttp( 'template/' + _this._page + '.html', resolve, reject).then(result => {
+            new Xhttp( 'template/' + _this._page + '_' + _this._action + '.html', resolve, reject).then(result => {
 
                 let tpl = result;
 

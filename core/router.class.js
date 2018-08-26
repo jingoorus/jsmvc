@@ -2,47 +2,67 @@
 
 class Core
 {
-	constructor(start, contaner)
+	constructor(startPage, contaner)
 	{
         this.contaner = contaner;
 
         this._hash = new Hash();
 
-        let hash = this._hash.getPage();
+        let hashPage = this._hash.getPage();
 
-        if (hash != '') start = hash;
+        if (hashPage != '') startPage = hashPage;
 
-        this.goto(start);
+        this.goto(startPage, this._hash.getAction());
 
         let _this = this;
 
         window.addEventListener('hashchange', function(){
 
-            _this.goto(_this._hash.getPage());
+            _this.goto(_this._hash.getPage(), _this._hash.getAction());
         });
 	}
 
-	goto(page)
+	goto(page, action)
 	{
-		let controller = new Controller(new Model(page), new View(page));
+		let controller;
 
         let data = this._hash.getPageData();
 
         let _this = this;
 
-        controller.execute(result => {
+		let execute_controller = () => {
 
-            _this.apply(result);
+			controller.execute(result => {
 
-            _this._hash.write(page, data);
+	            _this.apply(result);
 
-        }, data);
+	            _this._hash.write(page, action, data);
+
+	        }, data);
+		}
+
+		if (action != 'index') {
+
+			let controller_name = 'Controller_' + page ;
+
+			let loader = new Loader(page).then(() => {
+
+				controller = eval('new ' + controller_name + '("' + page + '", "' + action + '")');
+
+				execute_controller();
+
+			});
+
+		} else {
+
+			controller = new Controller(page, action);
+
+			execute_controller();
+		}
 	}
 
-    apply(html, prepare)
+    apply(html)
     {
-        if (prepare) html = prepare(html);
-
         this.contaner.innerHTML = html;
     }
 }

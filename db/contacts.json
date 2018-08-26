@@ -1,3 +1,6 @@
 {
-    "name":"Contacts page"
+    "index":
+    {
+        "name":"Contacts page"
+    }
 }

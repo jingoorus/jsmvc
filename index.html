@@ -9,6 +9,7 @@
 	<script src="core/view.class.js"></script>
 	<script src="core/xhttp.class.js"></script>
 	<script src="core/hash.class.js"></script>
+	<script src="core/loader.js"></script>
 	<style>
 	    body {padding:0 30%;}
 	    header {padding:2em 0;}
@@ -19,13 +20,14 @@
 <header>Simple MVC JavaScript engine</header>
 <nav>
 	<span><a href="#main">Main</a></span> |
+	<span><a href="#blog">Blog</a></span> | 
 	<span><a href="#contacts">Contacts</a></span>
 </nav>
 <section id="content"></section>
 <footer>Simple MVC JavaScript engine</footer>
 <script>
 let container = document.querySelectorAll('#content')[0];
-const app = new Core('main', container);//calling router
+const app = new Core('main', container);//calling router with starting page and content container
 </script>
 </body>
 </html>

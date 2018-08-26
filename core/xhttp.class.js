@@ -6,7 +6,7 @@ class Xhttp
     {
         let xmlhttp = this.xmlhttp();
 
-        return new Promise(function(resolve, reject) {
+        return new Promise((resolve, reject) => {
 
             xmlhttp.open('GET', file , true);
 

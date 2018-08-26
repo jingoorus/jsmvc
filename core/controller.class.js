@@ -2,20 +2,18 @@
 
 class Controller
 {
-	constructor (model, view)
+	constructor (page, action = 'index')
 	{
-		this._model = model;
+		this._model = new Model(page, action);
 
-        this._view = view;
+        this._view = new View(page, action);
 	}
 
 	execute(apply, hashData)
 	{
         let _this = this;
 
-        this._model.getData().then(data => {
-
-            if (hashData !== false) Object.assign(data, hashData);
+        this._model.getData(hashData).then(data => {
 
             return _this._view.generate(data);
 
@@ -32,7 +30,7 @@ class Controller
         }, er => {
 
             console.log(er);
-            
+
             alert('Error pageload');
         });
 	}
