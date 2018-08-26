@@ -7,4 +7,9 @@ core/loader.js - script loader<br />
 core/model.class.js - deafult model class<br />
 core/router.class.js - router class<br />
 core/view.class.js - default view class<br />
-core/xhttp.class.js - xhttp loader class
+core/xhttp.class.js - xhttp loader class<br />
+controllers/ - controllers folder<br />
+db/ - database folder<br />
+models/ - models folder<br />
+template/ - template folders<br />
+views/ - views folder
