@@ -63,6 +63,6 @@ class Core
 
     apply(html)
     {
-        this.contaner.innerHTML = html;
+		this.contaner.innerHTML = html;
     }
 }
