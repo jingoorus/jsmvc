@@ -9,7 +9,7 @@ class Controller
         this._view = new View(page, action);
 	}
 
-	execute(apply, hashData)
+	execute(apply, hashData, callback)
 	{
         let _this = this;
 
@@ -26,6 +26,8 @@ class Controller
         }).then(result => {
 
             apply(result);
+			
+			if(callback) callback();
 
         }, er => {
 

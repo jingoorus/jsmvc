@@ -19,6 +19,7 @@ class Core
         window.addEventListener('hashchange', function(){
 
             _this.goto(_this._hash.getPage(), _this._hash.getAction());
+
         });
 	}
 
@@ -29,6 +30,8 @@ class Core
         let data = this._hash.getPageData();
 
         let _this = this;
+
+		this.loadevent = new CustomEvent('pageload', {detail:{ 'page': page, 'action': action }});
 
 		let execute_controller = () => {
 
@@ -45,7 +48,9 @@ class Core
 
 			let controller_name = 'Controller_' + page ;
 
-			let loader = new Loader(page).then(() => {
+			let loader = new Loader();
+
+			loader.applyCore(page).then(() => {
 
 				controller = eval('new ' + controller_name + '("' + page + '", "' + action + '")');
 
@@ -64,5 +69,7 @@ class Core
     apply(html)
     {
 		this.contaner.innerHTML = html;
+
+		document.dispatchEvent(this.loadevent);
     }
 }
